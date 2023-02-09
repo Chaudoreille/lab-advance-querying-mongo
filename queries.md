@@ -109,30 +109,30 @@
 ### 14. Order the companies by their `founded year`, retrieving only their `name` and `founded year`.
 
 - **QUERY**: ``
-- **PROJECT**: ``
-- **SORT**: ``
+- **PROJECT**: `{"_id": 0, "name": 1, "founded_year": 1}`
+- **SORT**: `{"founded_year": 1}`
 - **LIMIT**: ``
 - **SKIP**: ``
 
 ### 15. All the companies that have been founded on the first seven days of the month, including the seventh. Sort them by their `acquisition price` in a descending order. Limit the search to 10 documents.
 
-- **QUERY**: ``
+- **QUERY**: `{"founded_month": {$lte: 7}}`
 - **PROJECT**: ``
-- **SORT**: ``
-- **LIMIT**: ``
+- **SORT**: `{"acquisition.price_amount": -1}`
+- **LIMIT**: `10`
 - **SKIP**: ``
 
 ### 16. All the companies on the 'web' `category` that have more than 4000 employees. Sort them by the amount of employees in ascending order.
 
-- **QUERY**: ``
+- **QUERY**: `{"category_code": "web", "number_of_employees": {$gt: 4000}}`
 - **PROJECT**: ``
-- **SORT**: ``
+- **SORT**: `{"number_of_employees": 1}`
 - **LIMIT**: ``
 - **SKIP**: ``
 
 ### 17. All the companies whose acquisition amount is more than 10.000.000, and currency is 'EUR'.
 
-- **QUERY**: ``
+- **QUERY**: `{"acquisition.price_amount": {$gt: 10000000}, "acquisition.price_currency_code": 'EUR'}`
 - **PROJECT**: ``
 - **SORT**: ``
 - **LIMIT**: ``
