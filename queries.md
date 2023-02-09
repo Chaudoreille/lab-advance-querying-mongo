@@ -78,21 +78,21 @@
 
 - **QUERY**: ``
 - **PROJECT**: ``
-- **SORT**: ``
-- **LIMIT**: ``
+- **SORT**: `{"number_of_employees": -1}`
+- **LIMIT**: `10`
 - **SKIP**: ``
 
 ### 11. All the companies founded on the second semester of the year. Limit your search to 1000 companies.
 
-- **QUERY**: ``
+- **QUERY**: `{"founded_month": {$gt: 6}}`
 - **PROJECT**: ``
 - **SORT**: ``
-- **LIMIT**: ``
+- **LIMIT**: `1000`
 - **SKIP**: ``
 
 ### 12. All the companies founded before 2000 that have an acquisition amount of more than 10.000.000
 
-- **QUERY**: ``
+- **QUERY**: `{"founded_year": {$lt: 2000}, "acquisition.price_amount": {$gt: 10000000}}`
 - **PROJECT**: ``
 - **SORT**: ``
 - **LIMIT**: ``
@@ -100,9 +100,9 @@
 
 ### 13. All the companies that have been acquired after 2010, order by the acquisition amount, and retrieve only their `name` and `acquisition` field.
 
-- **QUERY**: ``
-- **PROJECT**: ``
-- **SORT**: ``
+- **QUERY**: `{"acquisition.acquired_year": {$gt: 2010}}`
+- **PROJECT**: `{"_id": 0, "name": 1, "acquisition":1}`
+- **SORT**: `{"acquisition.price_amount": 1}`
 - **LIMIT**: ``
 - **SKIP**: ``
 
